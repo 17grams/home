@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(45deg, #1e90ff, #ff6b81);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+  
+.profile {
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+  
+.profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+  
+.menu-toggle {
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease, font-size 0.3s ease;
+}
+  
+.menu-toggle:hover {
+    transform: scale(1.1); /* ホバー時に少し大きくなる */
+}
+  
+.menu-toggle:hover .bar {
+    width: 30px; /* ホバー時にバーの幅を調整 */
+}
+  
+.bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    margin: 4px 0;
+    transition: width 0.3s ease;
+}
+  
+.dropdown-menu {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    border: 2px solid #fff;
+    padding: 10px;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    z-index: 100;
+}
+  
+.dropdown-menu:hover {
+    display: grid;
+}
+  
+.menu-toggle:hover + .dropdown-menu {
+    display: grid;
+}
+  
+.dropdown-menu a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    transition: background 0.3s;
+}
+  
+.dropdown-menu a:hover {
+    background: rgba(255, 105, 248, 0.8);
+}
+  
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+}
+
+.floating-text {
+    font-size: 5rem; /* 固定サイズにする */
+    color: #fff;
+    font-family: 'Great Vibes', cursive;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: font-size 0.3s ease; /* サイズ変更のスムーズな遷移を追加 */
+}
+
+.floating-text span {
+    display: inline-block;
+    opacity: 0;
+    transform: scale(4);
+    animation: floatIn 1s forwards;
+}
+
+@keyframes floatIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
