@@ -1,20 +1,28 @@
-function toggleMenu() {
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    const menuToggle = document.getElementById('menuToggle');
-    const floatingText = document.getElementById('floatingText');
-    const container = document.querySelector('.container');
-
-    container.classList.toggle('menu-expanded'); // Toggle class for expanding the menu
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-    const textElement = document.querySelector(".floating-text");
-    const text = textElement.textContent;
-    textElement.innerHTML = "";
-    text.split("").forEach((char, index) => {
-        const span = document.createElement("span");
-        span.textContent = char === " " ? "\u00A0" : char;
-        span.style.animationDelay = `${index * 0.1}s`;
-        textElement.appendChild(span);
+    const menuToggle = document.getElementById("menuToggle");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+
+    // メニューを開閉する関数
+    const toggleMenu = () => {
+        dropdownMenu.classList.toggle("show");
+    };
+
+    // メニューボタンをクリックしたらメニューを開閉する
+    menuToggle.addEventListener("click", toggleMenu);
+
+    // メニューの外側をクリックしたらメニューを閉じる
+    document.addEventListener("click", (event) => {
+        const targetElement = event.target;
+        if (!menuToggle.contains(targetElement) && !dropdownMenu.contains(targetElement)) {
+            dropdownMenu.classList.remove("show");
+        }
+    });
+
+    // メニュー上にマウスがある間、メニューを開いたままにする
+    dropdownMenu.addEventListener("mouseenter", toggleMenu);
+
+    // メニューからマウスが外れたら、メニューを閉じる
+    dropdownMenu.addEventListener("mouseleave", () => {
+        dropdownMenu.classList.remove("show");
     });
 });
