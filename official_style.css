@@ -105,11 +105,12 @@ body {
 }
 
 .floating-text {
-    font-size: 5rem; /* 固定サイズにする */
+    font-size: 3.8rem; /* 固定サイズにする */
     color: #fff;
     font-family: 'Great Vibes', cursive;
     white-space: nowrap;
     overflow: hidden;
+    justify-content: center;
     transition: font-size 0.3s ease; /* サイズ変更のスムーズな遷移を追加 */
 }
 
