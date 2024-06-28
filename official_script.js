@@ -26,3 +26,16 @@ document.addEventListener("DOMContentLoaded", () => {
         dropdownMenu.classList.remove("show");
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const textElement = document.getElementById('floatingText');
+    const text = textElement.textContent;
+    textElement.textContent = '';
+
+    text.split('').forEach((char, index) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.style.animationDelay = `${index * 0.1}s`; // 各文字のアニメーション遅延を設定
+        textElement.appendChild(span);
+    });
+});
